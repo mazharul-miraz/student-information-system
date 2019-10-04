@@ -50,7 +50,6 @@ def Insertdata(request):
 
 
 
-
 @app.route('/update')
 def update():
     return render_template('update.html')
@@ -68,7 +67,7 @@ def search():
 
 @app.route('/viewall')
 def viewall():
-    return 'all record goes here'
+    return render_template('viewall.html')
 
 
 if __name__ == '__main__':
