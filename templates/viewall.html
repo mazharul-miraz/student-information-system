@@ -10,24 +10,25 @@
             <table class="table view-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Actions</th>
+                        <th>regno</th>
+                        <th>firstname</th>
+                        <th>lastname</th>
+                        <th>year</th>
+                        <th>date</th>
+												<th>domain</th>
+												<th>address</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for u in user %}
                     <tr>
-                        <td>{{u._id}}</td>
-                        <td>{{u.name}}</td>
-                        <td>{{u.email}}</td>
+                        <td>{{u.regno}}</td>
+                        <td>{{u.firstname}}</td>
+                        <td>{{u.lastname}}</td>
+                        <td>{{u.year}}</td>
+												<td>{{u.datw}}</td>
+												<td>{{u.domain}}</td>
                         <td>{{u.address}}</td>
-                        <td>{{u.phone}}</td>
-                        <td><a class="btn" href="/update/{{u._id}}">Edit</a></td>
-                        <td><a class="btn" href="/delete/{{u._id}}">delete</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

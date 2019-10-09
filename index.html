@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Entry </title>
+<!-- 	<link rel="stylesheet" href="{{url_for('static', filename=('static/style.css')}}">
+ --></head>
+<body>
+
+<div class="app-view">
+	<div class="sidebar">
+	<ul>
+	  <li><a class="active" href="#home">Home</a></li>
+	  <li><a href="index.html">Add Entery</a></li>
+	  <li><a href="update.html">Update</a></li>
+	  <li><a href="delete.html">Delete</a></li>
+	  <li><a href="search.html">Search</a></li>
+	  <li><a href="allrec.html">view all record</a></li>
+	</ul>
+	</div>
+	<div class="content-bar">
+
+		<span>Add Entery</span>
+
+		<h3>Student information</h3>
+		<form action="">
+
+		<div class="userdata">
+			
+			First name:<br>
+		  <input type="text" name="firstname">
+		  <br>
+		  Last name:<br>
+		  <input type="text" name="lastname"><br>
+
+		  Registration No<br>
+		  <input type="number" name="regno"><br>
+		 
+		  Domain<br>
+		  <select name="domain">
+		    <option value="cse" selected>CSE</option>
+		    <option value="eee">EEE</option>
+		    <option value="civil">CIVIL</option>
+	  	 </select><br>	  
+		 
+		  Select year<br>
+		  <select name="year">
+		    <option value="1st" selected>First</option>
+		    <option value="1st" selected>Second</option>
+		    <option value="1st" selected>Third</option>
+		    <option value="1st" selected>Fourth</option>
+	  	 </select><br>	
+		
+		 Date Of Birth:<br>
+		 <input type="date" name="date"><br>	  
+		 Address:<br>
+		 <input type="text" name="address"><br>	      
+		 <input type="submit" value="Submit">
+
+		</div>
+
+		  <div class="user-img">
+
+			<input type="file" name="fileupload" value="fileupload" id="fileupload"><br>
+			<label for="fileupload"> Upload photo ( Maxsize x.x MB)</label>
+			<input type="submit" value="submit">
+
+
+		  </div>
+
+		</form>
+
+		</table>
+	</div>
+
+</div>
+
+
+</body>
+</html>

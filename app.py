@@ -45,9 +45,7 @@ def Insertdata(request):
             'domain': Domain,
             'address': Address,
         })
-    return redirect(url_for('/'))
-
-
+    return redirect(url_for('/main'))
 
 
 @app.route('/update')
@@ -60,14 +58,22 @@ def delete():
     return render_template('delete.html')
 
 
-@app.route('/search')
+@app.route('/search', methods=['POST', 'GET'])
 def search():
-    return render_template('search.html')
+    if request.method == 'POST':
+        return SearchResult(request)
+    else:
+        return render_template('search.html')
+# SearchResult():
 
 
 @app.route('/viewall')
 def viewall():
-    return render_template('viewall.html')
+    users = db.user.find()
+    user_list = []
+    for i in users:
+        user_list.append(i)
+    return render_template('viewall.html', user=user_list)
 
 
 if __name__ == '__main__':
