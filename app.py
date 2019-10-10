@@ -64,8 +64,20 @@ def search():
         return SearchResult(request)
     else:
         return render_template('search.html')
-    SearchResult():
-    
+
+
+def SearchResult(request):
+
+    Regno = request.form['regno']
+
+    searchData = db.user.find_one({
+        'regno': Regno,
+    })
+    if searchData == None:
+        return 'no data found'
+    else:
+        print(searchData)
+        return render_template('search.html', user=searchData)
 
 
 @app.route('/viewall')

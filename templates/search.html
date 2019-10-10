@@ -24,7 +24,7 @@
 			<span>Search Entery</span>
 
 			<h3>Student information</h3>
-			<form action="/search" ,method="POST">
+			<form action="/search" method="POST">
 				<div class="userdata">
 					Registration No<br>
 					<input type="number" name="regno"><br>
@@ -35,6 +35,7 @@
 			<div class="src-dataview">
 
 				<table>
+					<!-- {% for u in user %} -->
 					<tr>
 						<th>Registration No</th>
 						<th>First name</th>
@@ -44,14 +45,14 @@
 						<th>Address</th>
 					</tr>
 					<tr>
-						<td>778713</td>
-						<td>cabdic </td>
-						<td>sanpole</td>
-						<td>fourth</td>
-						<td>09/03/1996</td>
-						<td>Chittagong</td>
+						<td>{{user.regno}}</td>
+						<td>{{user.firstname}} </td>
+						<td>{{user.lastname}}</td>
+						<td>{{user.year}}</td>
+						<td>{{user.date}}</td>
+						<td>{{user.address}}</td>
 					</tr>
-
+					<!-- {% endfor %} -->
 				</table>
 			</div>
 		</div>
