@@ -64,7 +64,8 @@ def search():
         return SearchResult(request)
     else:
         return render_template('search.html')
-# SearchResult():
+    SearchResult():
+    
 
 
 @app.route('/viewall')
