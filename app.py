@@ -87,7 +87,6 @@ def search():
 def SearchResult(request):
 
     Regno = request.form['regno']
-
     searchData = db.user.find_one({
         'regno': Regno,
     })

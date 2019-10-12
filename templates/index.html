@@ -29,23 +29,23 @@
 
 				<form action="/" method="POST">
 					First name:<br>
-					<input type="text" name="firstname">
+					<input type="text" name="firstname" required>
 					<br>
 					Last name:<br>
-					<input type="text" name="lastname"><br>
+					<input type="text" name="lastname" required><br>
 
 					Registration No<br>
-					<input type="number" name="regno"><br>
+					<input type="number" name="regno" required><br>
 
 					Domain<br>
-					<select name="domain">
+					<select name="domain" required>
 						<option value="cse" selected>CSE</option>
 						<option value="eee">EEE</option>
 						<option value="civil">CIVIL</option>
 					</select><br>
 
 					Select year<br>
-					<select name="year">
+					<select name="year" required>
 						<option value="1st" selected>First</option>
 						<option value="1st" selected>Second</option>
 						<option value="1st" selected>Third</option>
@@ -53,9 +53,9 @@
 					</select><br>
 
 					Date Of Birth:<br>
-					<input type="date" name="date"><br>
+					<input type="date" name="date" required><br>
 					Address:<br>
-					<input type="text" name="address"><br>
+					<input type="text" name="address" required><br>
 					<input type="submit" value="Submit">
 
 				</form>

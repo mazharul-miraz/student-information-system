@@ -27,13 +27,12 @@
 			<form action="/search" method="POST">
 				<div class="userdata">
 					Registration No<br>
-					<input type="number" name="regno"><br>
+					<input type="number" name="regno" required><br>
 					<input type="submit" value="Submit">
 				</div>
 			</form><br>
-
+			{% if user %}
 			<div class="src-dataview">
-
 				<table>
 					<tr>
 						<th>Registration No</th>
@@ -53,6 +52,7 @@
 					</tr>
 				</table>
 			</div>
+			{% endif %}
 		</div>
 
 	</div>
