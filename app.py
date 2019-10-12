@@ -53,18 +53,27 @@ def update():
     return render_template('update.html')
 
 
-@app.route('/delete')
+@app.route('/delete', methods=['POST', 'GET'])
 def delete():
-     if request.method == 'POST':
-         return userdel():
+    if request.method == 'POST':
+        return userdel(request)
     else:
         return render_template('delete.html')
 
 
-def userdel():
-     deluser = db.user.find_one({
+def userdel(request):
+    Regno = request.form['regno']
+
+    deluser = db.user.find_one({
         'regno': Regno,
     })
+    if deluser != None:
+        db.user.delete_one({
+            'regno': Regno
+        })
+        return redirect('/delete')
+    else:
+        return 'No user found'
 
 
 @app.route('/search', methods=['POST', 'GET'])
