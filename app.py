@@ -45,7 +45,7 @@ def Insertdata(request):
             'domain': Domain,
             'address': Address,
         })
-    return redirect(url_for('/main'))
+    return redirect('/')
 
 
 @app.route('/update')
@@ -55,7 +55,16 @@ def update():
 
 @app.route('/delete')
 def delete():
-    return render_template('delete.html')
+     if request.method == 'POST':
+         return userdel():
+    else:
+        return render_template('delete.html')
+
+
+def userdel():
+     deluser = db.user.find_one({
+        'regno': Regno,
+    })
 
 
 @app.route('/search', methods=['POST', 'GET'])
