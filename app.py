@@ -48,9 +48,12 @@ def Insertdata(request):
     return redirect('/')
 
 
-@app.route('/update')
+@app.route('/update', methods=['POST', 'GET'])
 def update():
-    return render_template('update.html')
+    if request.method == 'POST':
+        return SearchResult(request)
+    else:
+        return render_template('update.html')
 
 
 @app.route('/delete', methods=['POST', 'GET'])
@@ -104,6 +107,11 @@ def viewall():
     for i in users:
         user_list.append(i)
     return render_template('viewall.html', user=user_list)
+
+
+@app.route('/sudo')
+def sudo():
+    return render_template('sudo.html')
 
 
 if __name__ == '__main__':
