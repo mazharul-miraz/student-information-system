@@ -109,6 +109,11 @@ def viewall():
     return render_template('viewall.html', user=user_list)
 
 
+@app.route('/viewall')
+def login():
+    return render_template('login.html')
+
+
 @app.route('/sudo')
 def sudo():
     return render_template('sudo.html')
