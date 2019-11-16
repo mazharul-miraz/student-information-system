@@ -18,7 +18,7 @@ a {
     width: 100%;
     background-color: #DD2C00;
     overflow: hidden;
-    padding: 20px 5px;
+    padding: 12px 0px;
     box-shadow: 0 2px 4px rgba(0,0,0,.5);
 }
 
@@ -48,7 +48,7 @@ a {
 
 .header li a {
     display: block;
-    color: 
+    color:
     white;
     text-align: center;
     padding: 6px 15px;
@@ -84,10 +84,10 @@ a {
     text-decoration: none;
     list-style-type: none;
 }
-
 .app-sidebar ul li a {
-  color: #333;
- list-style-type: none;
+    color: #333;
+    list-style-type: none;
+    font-size: 14px;
 }
 
 .app-sidebar ul li a:hover:not(.active) {
@@ -158,7 +158,7 @@ tr:nth-child(even) {
   background-color: #FFE9EC;
 }
 
-.user_list { 
+.user_list {
     margin: 15px 0 10px 0;
 }
 
@@ -174,14 +174,14 @@ tr:nth-child(even) {
     text-align: center;
       margin-top: 80px;
   margin-bottom: 80px;
-    
+
 }
 .form-signin {
-    padding: 15px 35px 45px;
-    width: 17%;
-    margin: 0 auto;
-    background-color: #a30000;
-    border: 1px solid rgba(0,0,0,0.1);
+	padding: 15px 35px 45px;
+	width: 17%;
+	margin: 125px auto;
+	background-color: #a30000;
+	border: 1px solid rgba(0,0,0,0.1);
 }
 
 .form-signin-heading, .checkbox {
@@ -197,12 +197,15 @@ tr:nth-child(even) {
     font-size: 16px;
     height: auto;
     padding: 10px;
-    @include box-sizing(border-box);
-
-    &:focus {
-      z-index: 2;
-    }
+    &: focus { z-index: 2;
+    }: ;
+    margin: 15px 0;
+    width: 90%;
   }
+
+
+
+
 .form-signin input[type="text"] {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
@@ -220,4 +223,31 @@ tr:nth-child(even) {
     display: block;
     padding: 4px 15px;
     margin: 10px 0 0 0;
+}
+
+.btn {
+  padding: 9px 20px;
+  border-radius: 3px;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.btn:hover{
+  background:#dd2c00;
+  color: #FFE9EC;
+  cursor: pointer;
+}
+
+
+
+
+input[type=text] {
+  border-radius:0;
+  border: 1px solid #444;
+  box-sizing: border-box;
+}
+input[type=number] {
+  border-radius:0;
+  border: 1px solid #444;
+  box-sizing: border-box;
 }
