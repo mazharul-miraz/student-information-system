@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-body{
+body {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -15,23 +15,23 @@ a {
 }
 
 .header {
-    width: 100%;
-    background-color: #DD2C00;
-    overflow: hidden;
-    padding: 12px 0px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.5);
+  width: 100%;
+  background-color: #DD2C00;
+  overflow: hidden;
+  padding: 12px 0px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 }
 
-.user-header{
+.user-header {
   background: #248D0F
 }
 
 
-.nav-left{
+.nav-left {
   float: left;
 }
 
-.nav-right{
+.nav-right {
   float: right;
 }
 
@@ -47,95 +47,98 @@ a {
 }
 
 .header li a {
-    display: block;
-    color:
+  display: block;
+  color:
     white;
-    text-align: center;
-    padding: 6px 15px;
-    text-decoration: none;
+  text-align: center;
+  padding: 6px 15px;
+  text-decoration: none;
 }
 
 
-.nav-right ul li{
-  margin-right:10px;
+.nav-right ul li {
+  margin-right: 10px;
 }
+
 .active {
   background-color: #4CAF50;
 }
 
 
-.app-sidebar{
+.app-sidebar {
   float: left;
   margin-top: 3px;
   padding: 10px 30px;
   width: 12%;
   overflow: hidden;
   height: auto;
-  border-right: 1px  solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
 }
 
-.app-sidebar h4{
+.app-sidebar h4 {
   margin-bottom: 20px;
 }
 
 .app-sidebar ul li {
-    color: #000;
-    padding: 8px 0;
-    text-decoration: none;
-    list-style-type: none;
+  color: #000;
+  padding: 8px 0;
+  text-decoration: none;
+  list-style-type: none;
 }
+
 .app-sidebar ul li a {
-    color: #333;
-    list-style-type: none;
-    font-size: 14px;
+  color: #333;
+  list-style-type: none;
+  font-size: 14px;
 }
 
 .app-sidebar ul li a:hover:not(.active) {
   color: #000;
 }
 
-.app-content{
+.app-content {
   float: left;
   padding: 10px 15px;
   width: 80%;
   overflow: hidden;
 }
 
-.app-data{
+.app-data {
   padding: 30px auto;
 }
 
 
 .card-block {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-gap: 10px;
-    background-color: ;
-    padding: 10px 0;
-    margin-bottom: 40px;
-}
-.card{
-
-    background-color: #FFE9EC;
-    padding: 20px ;
-    text-align: center;
-    height: 70px;
-    cursor: pointer;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: ;
+  padding: 10px 0;
+  margin-bottom: 40px;
 }
 
-.app-content h2{
+.card {
+
+  background-color: #FFE9EC;
+  padding: 20px;
+  text-align: center;
+  height: 70px;
+  cursor: pointer;
+}
+
+.app-content h2 {
   font-size: 24px;
   font-weight: 200;
   margin: 20px auto;
 }
 
-.card-heading{
-    display: block;
-    text-transform: uppercase;
-    margin-bottom: 12px;
+.card-heading {
+  display: block;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
-.card-num{
+.card-num {
   font-size: 46px;
   margin-bottom: 13px;
   display: block;
@@ -148,7 +151,8 @@ table {
   width: 100%;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
@@ -159,70 +163,77 @@ tr:nth-child(even) {
 }
 
 .user_list {
-    margin: 15px 0 10px 0;
+  margin: 15px 0 10px 0;
 }
 
 
 .log-mod {
-    padding: 30px 20px;
-    overflow: hidden;
-    color: #fff;
+  padding: 30px 20px;
+  overflow: hidden;
+  color: #fff;
 }
 
 
 .log-mod h3 {
-    text-align: center;
-      margin-top: 80px;
+  text-align: center;
+  margin-top: 80px;
   margin-bottom: 80px;
 
 }
+
 .form-signin {
-	padding: 15px 35px 45px;
-	width: 17%;
-	margin: 125px auto;
-	background-color: #a30000;
-	border: 1px solid rgba(0,0,0,0.1);
+  padding: 15px 35px 45px;
+  width: 17%;
+  margin: 125px auto;
+  background-color: #a30000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.form-signin-heading, .checkbox {
-    margin-bottom: 30px;
-  }
+.form-signin-heading,
+.checkbox {
+  margin-bottom: 30px;
+}
 
 .checkbox {
-    font-weight: normal;
-  }
+  font-weight: normal;
+}
 
 .form-control {
-    position: relative;
-    font-size: 16px;
-    height: auto;
-    padding: 10px;
-    &: focus { z-index: 2;
-    }: ;
-    margin: 15px 0;
-    width: 90%;
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+
+  &: focus {
+    z-index: 2;
   }
+
+  :;
+  margin: 15px 0;
+  width: 90%;
+}
 
 
 
 
 .form-signin input[type="text"] {
-    margin-bottom: -1px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .form-signin input[type="password"] {
-    margin-bottom: 20px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 }
 
 
 .log-mod .btn {
-    display: block;
-    padding: 4px 15px;
-    margin: 10px 0 0 0;
+  display: block;
+  padding: 4px 15px;
+  margin: 10px 0 0 0;
 }
 
 .btn {
@@ -232,8 +243,8 @@ tr:nth-child(even) {
   font-size: 16px;
 }
 
-.btn:hover{
-  background:#dd2c00;
+.btn:hover {
+  background: #dd2c00;
   color: #FFE9EC;
   cursor: pointer;
 }
@@ -242,12 +253,19 @@ tr:nth-child(even) {
 
 
 input[type=text] {
-  border-radius:0;
+  border-radius: 0;
   border: 1px solid #444;
   box-sizing: border-box;
 }
+
 input[type=number] {
-  border-radius:0;
+  border-radius: 0;
+  border: 1px solid #444;
+  box-sizing: border-box;
+}
+
+input[type=password] {
+  border-radius: 0;
   border: 1px solid #444;
   box-sizing: border-box;
 }

@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Wellcome (username)</title>
 	<link rel="stylesheet" type="text/css" href="sudo_style.css">
 </head>
-<body>
-<div class="header user-header">
-	<div class="nav-left">
-		<ul>
-			<li style="background-color: #124C06"><a href="#">Wellcome User</a></li>
-		</ul>
-	</div>
-	<div class="nav-right">
-		<ul>
-			<li style="background-color: #124C06;"><a href="#">User Name</a></li>
-			<li style="background-color: #124C06;"><a href="#">Sign out</a></li>
-		</ul>
-	</div>
-</div>
 
-<div class="app-sidebar">
-	<h4>Sidebar</h4>
-	<ul>
-		<li><a href="sudo.html">Dashboard</a></li>
-		<li><a href="all_user.html">Users</a></li>
-		<li><a href="#">Create</a></li>
-		<li><a href="#">Update</a></li>
-		<li><a href="#">Edit</a></li>
-		<li><a href="#">Delete</a></li>
-	</ul>
-</div>
-<div class="app-content">
-	<h2>Dashbord</h2>
-	<div class="app-data">
+<body>
+	<div class="header user-header">
+		<div class="nav-left">
+			<ul>
+				<li style="background-color: #124C06"><a href="#">Wellcome User</a></li>
+			</ul>
+		</div>
+		<div class="nav-right">
+			<ul>
+				<li style="background-color: #124C06;"><a href="#">User Name</a></li>
+				<li style="background-color: #124C06;"><a href="#">Sign out</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="app-sidebar">
+		<h4>Sidebar</h4>
+		<ul>
+			<li><a href="sudo.html">Dashboard</a></li>
+			<li><a href="all_user.html">Users</a></li>
+			<li><a href="#">Create</a></li>
+			<li><a href="#">Update</a></li>
+			<li><a href="#">Delete</a></li>
+		</ul>
+	</div>
+	<div class="app-content">
+		<h2>Dashbord | Create a record</h2>
+		<div class="app-data">
 			<div class="card-block">
 				<div class="user-form">
 					<form action="/" method="POST">
@@ -42,17 +43,17 @@
 						<br>
 						<lebel>Last name</lebel><br>
 						<input type="text" name="lastname" required><br>
-	
+
 						<lebel>Registration No</lebel><br>
 						<input type="number" name="regno" required><br>
-	
+
 						<lebel>Domain</lebel><br>
 						<select name="domain" required>
 							<option value="cse" selected>CSE</option>
 							<option value="eee">EEE</option>
 							<option value="civil">CIVIL</option>
 						</select><br>
-	
+
 						<lebel>Select year</lebel><br>
 						<select name="year" required>
 							<option value="1st" selected>First</option>
@@ -60,18 +61,19 @@
 							<option value="1st" selected>Third</option>
 							<option value="1st" selected>Fourth</option>
 						</select><br>
-	
+
 						<lebel>Date Of Birth:</lebel><br>
 						<input type="date" name="date" required><br>
 						<lebel>Address</lebel><br>
 						<input type="text" name="address" required><br>
-						<input type="submit" value="Submit">
-	
+						<input type="submit" value="Save Record">
+
 					</form>
 				</div>
 			</div>
+		</div>
 	</div>
-</div>
 
 </body>
+
 </html>
