@@ -4,10 +4,9 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
+mongoConnect = MongoClient()
 client = MongoClient('localhost', 27017)
-client = MongoClient('mongodb://localhost:27017/')
 db = client.sisdb
-collection = db.sisdb
 
 
 #USER LOGIN
@@ -62,6 +61,20 @@ def add_user():
         return CreateUser()
     else:
         print('something went wrong')
+        return render_template('add_user.html')
 
+
+def CreateUser():
+    UserExist = db.user.find_one({"email": newuserEmail})
+
+    if UserExist != None:
+        print(UserExist)
+        return " this user already exist"
+    else:
+        db.user.insert_one({"user": newuserEmail, "password": user_password})
+        return redirect(url_for('sudo'))
+
+
+print(user)
 
 app.run(debug=True)
