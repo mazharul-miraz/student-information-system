@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>add new user</title>
+    <link rel="stylesheet" type="text/css" href="sudo_style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/sudo_style.css') }}">
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav-left">
+            <ul>
+                <li style="background-color: #A30000"><a href="#">Super Admin</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li style="background-color: #B71C1C;"><a href="#">User Name</a></li>
+                <li style="background-color: #B71C1C;"><a href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="app-sidebar">
+        <h4>Sidebar</h4>
+        <ul>
+            <li><a href="sudo">Dashboard</a></li>
+            <li><a href="add_user">Add New User</a></li>
+            <li><a href="all_user">All Users</a></li>
+        </ul>
+    </div>
+    <div class="app-content">
+        <h2>Dashbord</h2>
+        <form action="/" method="POST">
+            <lebel>User Name </lebel>
+            <br>
+            <input type="text" name="username" required>
+            <br>
+            <lebel>Password</lebel><br>
+            <input type="number" name="password" required><br>
+            <input type="submit" value="Create User">
+        </form>
+    </div>
+
+</body>
+
+</html>

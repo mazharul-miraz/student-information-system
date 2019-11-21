@@ -184,7 +184,7 @@ tr:nth-child(even) {
 .form-signin {
   padding: 15px 35px 45px;
   width: 17%;
-  margin: 125px auto;
+  margin: 100px auto;
   background-color: #a30000;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }

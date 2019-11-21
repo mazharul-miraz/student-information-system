@@ -4,6 +4,7 @@
 <head>
     <title>Wellcome (username)</title>
     <link rel="stylesheet" type="text/css" href="sudo_style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/sudo_style.css') }}">
 </head>
 
 <body>
@@ -24,14 +25,14 @@
     <div class="app-sidebar">
         <h4>Sidebar</h4>
         <ul>
-            <li><a href="sudo.html">Dashboard</a></li>
             <li><a href="user.html">Create</a></li>
             <li><a href="user_update.html">Update</a></li>
             <li><a href="user_del.html">Delete</a></li>
+            <li><a href="user_src.html">Search</a></li>
         </ul>
     </div>
     <div class="app-content">
-        <h2>Dashbord | Search User</h2>
+        <h2>Search User</h2>
         <div class="app-data">
             <div class="card-block">
                 <div class="user-form">
