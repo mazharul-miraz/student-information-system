@@ -58,20 +58,25 @@ def view_all():
 @app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
-        return CreateUser()
+        return CreateUser(request)
     else:
         print('something went wrong')
         return render_template('add_user.html')
 
 
-def CreateUser():
-    UserExist = db.user.find_one({"email": newuserEmail})
+def CreateUser(request):
+    userEmail = request.form['email']
+    userPassword = request.form['password']
 
+    UserExist = db.user.find_one({"email": userEmail})
+
+    print('3')
     if UserExist != None:
-        print(UserExist)
+        print('UserExist')
         return " this user already exist"
     else:
-        db.user.insert_one({"user": newuserEmail, "password": user_password})
+        print('NOT UserExist')
+        db.user.insert_one({"email": userEmail, "password": userPassword})
         return redirect(url_for('sudo'))
 
 
