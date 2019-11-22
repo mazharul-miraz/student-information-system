@@ -49,9 +49,17 @@ def sudo():
 
 
 # VIEW ALL USER
-@app.route('/all_user')
+@app.route('/all_user', methods=['GET'])
 def view_all():
-    return render_template('all_user.html')
+    return ShowallUser()
+
+
+def ShowallUser():
+    userList = []
+    allUser = db.user.find()
+    for user in allUser:
+        userList.append(user)
+    return render_template('all_user.html', userList=userList)
 
 
 # ADD A USER
@@ -80,6 +88,5 @@ def CreateUser(request):
         return redirect(url_for('sudo'))
 
 
-print(user)
-
+#DEBUGGER
 app.run(debug=True)
