@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Wellcome (username)</title>
+	<title>Wellcome {{ user_email }}</title>
 	<link rel="stylesheet" type="text/css" href="sudo_style.css">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/sudo_style.css') }}">
 </head>
@@ -11,13 +11,13 @@
 	<div class="header user-header">
 		<div class="nav-left">
 			<ul>
-				<li style="background-color: #124C06"><a href="#">Wellcome User</a></li>
+				<li style="background-color: #124C06"><a href="#">Wellcome {{ user_email }}</a></li>
 			</ul>
 		</div>
 		<div class="nav-right">
 			<ul>
-				<li style="background-color: #124C06;"><a href="#">User Name</a></li>
-				<li style="background-color: #124C06;"><a href="#">Sign out</a></li>
+				<li style="background-color: #124C06;"><a href="#">{{ user_email }}</a></li>
+				<li style="background-color: #124C06;"><a href="/logout">Sign out</a></li>
 			</ul>
 		</div>
 	</div>

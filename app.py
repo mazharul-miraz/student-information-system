@@ -1,8 +1,9 @@
-from flask import Flask
+from flask import Flask, session
 from flask import render_template, url_for, request, redirect
 from pymongo import MongoClient
 
 app = Flask(__name__)
+app.secret_key = b'_5kmjiuhygtcuvib2u3biyuv90876rtxfcgvbi'
 
 mongoConnect = MongoClient()
 client = MongoClient('localhost', 27017)
@@ -13,15 +14,42 @@ db = client.sisdb
 @app.route('/', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-        return
+        return userLogin(request)
     else:
         return render_template('login.html')
 
 
-# USER DASHBOARD
+def userLogin(request):
+    loginEmail = request.form['userLoginEmail']
+    loginPsd = request.form['userLoginPsd']
+
+    # check user in database
+    newUser = db.user.find_one({"email": loginEmail})
+
+    print(newUser)
+
+    if newUser == None:  # user doesn't exist
+        return 'Sorry This Not Registered A User'
+    elif newUser['password'] != loginPsd:  # user exist
+        return 'Wrong password'
+    else:
+        session['user'] = loginEmail
+        # return 'volla!'
+        return redirect(url_for('user'))
+
+
 @app.route('/user')
 def user():
-    return render_template('user.html')
+    if 'user' in session:
+        return render_template('user.html', user_email=session['user'])
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('login'))
 
 
 # USER DELETE
@@ -78,7 +106,6 @@ def CreateUser(request):
 
     UserExist = db.user.find_one({"email": userEmail})
 
-    print('3')
     if UserExist != None:
         print('UserExist')
         return " this user already exist"
