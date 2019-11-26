@@ -10,7 +10,7 @@ client = MongoClient('localhost', 27017)
 db = client.sisdb
 
 
-#USER LOGIN
+# USER LOGIN
 @app.route('/', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -26,8 +26,6 @@ def userLogin(request):
     # check user in database
     newUser = db.user.find_one({"email": loginEmail})
 
-    print(newUser)
-
     if newUser == None:  # user doesn't exist
         return 'Sorry This Not Registered A User'
     elif newUser['password'] != loginPsd:  # user exist
@@ -38,12 +36,43 @@ def userLogin(request):
         return redirect(url_for('user'))
 
 
-@app.route('/user')
+@app.route('/user', methods=['POST', 'GET'])
 def user():
-    if 'user' in session:
-        return render_template('user.html', user_email=session['user'])
+
+    if request.method == 'POST':
+        return newRecord(request)
     else:
-        return redirect(url_for('login'))
+        if 'user' in session:
+            return render_template('user.html', user_email=session['user'])
+        else:
+            return redirect(url_for('login'))
+
+
+def newRecord(request):
+    user_firstname = request.form['firstname']
+    user_lastname = request.form['lastname']
+    user_regno = request.form['regno']
+    user_domain = request.form['domain']
+    user_year = request.form['year']
+    user_bdate = request.form['bdate']
+    user_address = request.form['address']
+
+    existingRecord = db.user.find_one({"regno": user_regno})
+
+    if existingRecord != None:
+        return ' This Registration Number Already Exist'
+    else:
+        db.user.insert_one({
+            "firstname": user_firstname,
+            "lastname": user_lastname,
+            "regno": user_regno,
+            "domain": user_domain,
+            "year": user_year,
+            "bdate": user_bdate,
+            "bdate": user_bdate,
+            "address": user_address,
+        })
+        return render_template('user.html', user_email=session['user'], notification_text='User Added')
 
 
 @app.route('/logout')
@@ -115,5 +144,5 @@ def CreateUser(request):
         return redirect(url_for('sudo'))
 
 
-#DEBUGGER
+# DEBUGGER
 app.run(debug=True)

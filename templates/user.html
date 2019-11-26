@@ -3,8 +3,17 @@
 
 <head>
 	<title>Wellcome {{ user_email }}</title>
-	<link rel="stylesheet" type="text/css" href="sudo_style.css">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/sudo_style.css') }}">
+	<style>
+		.notification {
+			margin: 10px;
+			padding: 10px;
+			text-align: center;
+			border-radius: 5px;
+			color: #fff;
+			background-color: #2d4d07;
+		}
+	</style>
 </head>
 
 <body>
@@ -22,6 +31,13 @@
 		</div>
 	</div>
 
+	{# if notification_text #}
+	<div class="notification">
+		<p>miraj</p>
+	</div>
+	{# endif #}
+
+
 	<div class="app-sidebar">
 		<h4>Sidebar</h4>
 		<ul>
@@ -36,7 +52,7 @@
 		<div class="app-data">
 			<div class="card-block">
 				<div class="user-form">
-					<form action="/" method="POST">
+					<form action="/user" method="POST">
 						<lebel>First name</lebel>
 						<br>
 						<input type="text" name="firstname" required>
@@ -57,13 +73,13 @@
 						<lebel>Select year</lebel><br>
 						<select name="year" required>
 							<option value="1st" selected>First</option>
-							<option value="1st" selected>Second</option>
-							<option value="1st" selected>Third</option>
-							<option value="1st" selected>Fourth</option>
+							<option value="2nd" selected>Second</option>
+							<option value="3rd" selected>Third</option>
+							<option value="4th" selected>Fourth</option>
 						</select><br>
 
 						<lebel>Date Of Birth:</lebel><br>
-						<input type="date" name="date" required><br>
+						<input type="date" name="bdate" required><br>
 						<lebel>Address</lebel><br>
 						<input type="text" name="address" required><br>
 						<input type="submit" value="Save Record">
