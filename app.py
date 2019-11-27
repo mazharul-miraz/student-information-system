@@ -120,15 +120,20 @@ def ShowallUser():
 
 
 # REMOVE USER
-@app.route('/removeuser', methods=['POST', 'GET'])
-def removeUser():
+@app.route('/removeuser/<user_email>', methods=['POST', 'GET'])
+def removeUser(user_email):
     if request.method == 'GET':
-        return 'hello'
+        return user_del(user_email, request)
     else:
-        return redirect(url_for('/all_user'))
+        return redirect(url_for('all_user'))
 
 
-# ADD A USER
+def user_del(user_email, request):
+    db.user.delete_one({"email": user_email})
+    return redirect(url_for('sudo'))
+    # ADD A USER
+
+
 @app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':

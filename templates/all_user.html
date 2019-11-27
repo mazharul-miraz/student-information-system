@@ -55,7 +55,7 @@
 					{% for item in userList %}
 					<tr>
 						<th>{{ item.email }}</th>
-						<th><a href="/removeuser">Remove</a></th>
+						<th><a href="/removeuser/{{ item.email }}">Remove</a></th>
 					</tr>
 					{% endfor %}
 				</table>
