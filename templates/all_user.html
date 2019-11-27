@@ -49,11 +49,13 @@
 				<table>
 					<tr>
 						<th>Email Address</th>
+						<th>Action</th>
 					</tr>
 
 					{% for item in userList %}
 					<tr>
 						<th>{{ item.email }}</th>
+						<th><a href="/removeuser">Remove</a></th>
 					</tr>
 					{% endfor %}
 				</table>

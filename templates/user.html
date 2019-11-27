@@ -31,11 +31,11 @@
 		</div>
 	</div>
 
-	{# if notification_text #}
+	{% if notification_text %}
 	<div class="notification">
-		<p>miraj</p>
+		<p>{{ notification_text }}</p>
 	</div>
-	{# endif #}
+	{% endif %}
 
 
 	<div class="app-sidebar">

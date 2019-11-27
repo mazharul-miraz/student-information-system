@@ -119,6 +119,15 @@ def ShowallUser():
     return render_template('all_user.html', userList=userList)
 
 
+# REMOVE USER
+@app.route('/removeuser', methods=['POST', 'GET'])
+def removeUser():
+    if request.method == 'GET':
+        return 'hello'
+    else:
+        return redirect(url_for('/all_user'))
+
+
 # ADD A USER
 @app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
