@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wellcome {{ user_email }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/sudo_style.css') }}">
+    <style>
+        .notification {
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #2d4d07;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header user-header">
+        <div class="nav-left">
+            <ul>
+                <li style="background-color: #124C06"><a href="#">Wellcome {{ user_email }}</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li style="background-color: #124C06;"><a href="#"></a></li>
+                <li style="background-color: #124C06;"><a href="/logout">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    {% if notification_text %}
+    <div class="notification">
+        <p>{{ notification_text }}</p>
+    </div>
+    {% endif %}
+
+
+    <div class="app-sidebar">
+        <h4>Sidebar</h4>
+        <ul>
+            <li><a href="all_record">All Record</a></li>
+            <li><a href="user_update">Update</a></li>
+            <li><a href="user_del">Delete</a></li>
+            <li><a href="user_src">Search</a></li>
+        </ul>
+    </div>
+    <div class="app-content">
+        <h2>All Record</h2>
+        <div class="app-data">
+            <div class="card-block">
+                <table>
+                    <tr>
+                        <th>Reg no </th>
+                        <th>First name </th>
+                        <th>Last name</th>
+                        <th>Domail</th>
+                        <th>Date of birth</th>
+                        <th>Year</th>
+                        <th>Address</th>
+                    </tr>
+                    {% for udata in allRecordList %}
+                    <tr>
+                        <td>{{ udata.regno }}</td>
+                        <td>{{ udata.firstname }}</td>
+                        <td>{{ udata.lastname }}</td>
+                        <td>{{ udata.domain }}</td>
+                        <td>{{ udata.bdate }}</td>
+                        <td>{{ udata.year }}</td>
+                        <td>{{ udata.address }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

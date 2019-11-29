@@ -36,6 +36,7 @@ def userLogin(request):
         return redirect(url_for('user'))
 
 
+# *******CRUD Add User***********
 @app.route('/user', methods=['POST', 'GET'])
 def user():
 
@@ -73,6 +74,7 @@ def newRecord(request):
             "address": user_address,
         })
         return render_template('user.html', user_email=session['user'], notification_text='User Added')
+# *******CRUD Add User***********
 
 
 @app.route('/logout')
@@ -99,6 +101,27 @@ def user_update():
     return render_template('user_update.html')
 
 
+# *********SHOW ALL************
+@app.route('/all_record', methods=['POST', 'GET'])
+def showAllRecord():
+    if request.method == 'GET':
+        return allrecord()
+        print(1)
+    else:
+        return 'something went worng'
+
+
+def allrecord():
+    allRecordList = []
+    recordList = db.user.find()
+    for record in recordList:
+        print(record)
+        allRecordList.append(record)
+    return render_template('all_record.html', allRecordList=allRecordList)
+
+
+# *********SUPER ADMIN************
+
 # SUPER USER
 @app.route('/sudo')
 def sudo():
@@ -115,6 +138,7 @@ def ShowallUser():
     userList = []
     allUser = db.user.find()
     for user in allUser:
+        print(user)
         userList.append(user)
     return render_template('all_user.html', userList=userList)
 
@@ -133,7 +157,7 @@ def user_del(user_email, request):
     return redirect(url_for('sudo'))
     # ADD A USER
 
-
+# ADD USER
 @app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
@@ -156,6 +180,8 @@ def CreateUser(request):
         print('NOT UserExist')
         db.user.insert_one({"email": userEmail, "password": userPassword})
         return redirect(url_for('sudo'))
+
+# *********SUPER ADMIN************
 
 
 # DEBUGGER
