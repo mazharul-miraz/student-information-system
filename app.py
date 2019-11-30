@@ -115,14 +115,39 @@ def uderDel(request):
 def user_src():
     return render_template('user_src.html')
 
-
+# *********Update User Record************
 # USER UPDATE
-@app.route('/user_update')
+@app.route('/user_update', methods=['GET', 'POST'])
 def user_update():
-    return render_template('user_update.html')
+    if request.method == 'POST':
+        return record_search(request)
+    else:
+        return render_template('user_update.html')
 
 
-# *********SHOW ALL************
+def record_search(request):
+    search_key = request.form["request_type"]
+    if search_key == 'search':
+        search_id = request.form["updateregno"]
+        UserExist = db.user.find_one({"regno": search_id})
+        if UserExist != None:
+            return render_template('user_update.html', user=UserExist)
+        else:
+            return render_template('user_update.html')
+    else:
+        return updateUser(request)
+        render_template('user_update.html')
+
+
+def updateUser():
+    update_firstname = request.form["firstname"]
+    update_lastname = request.form["lastname"]
+    update_regno = request.form["regno"]
+    update_domain = request.form["domain"]
+    update_year = request.form["year"]
+    update_date = request.form["date"]
+
+# *********SHOW ALL Record************
 @app.route('/all_record', methods=['POST', 'GET'])
 def showAllRecord():
     if request.method == 'GET':
@@ -159,7 +184,6 @@ def ShowallUser():
     userList = []
     allUser = db.user.find()
     for user in allUser:
-        print(user)
         userList.append(user)
     return render_template('all_user.html', userList=userList)
 

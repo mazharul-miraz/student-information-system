@@ -36,37 +36,106 @@
         <h2>Update record</h2>
         <div class="app-data">
             <div class="card-block">
+                <div class="search_bar">
+                    <form action="/user_update" method="POST">
+                        <lebel>Insert REG NO</lebel><br>
+                        <input type="number" name="updateregno" required><br>
+                        <input type="text" value="search" name="request_type" style="visibility: hidden;display: none;">
+                        <input type="submit" value="Search Record">
+                    </form>
+                </div>
                 <div class="user-form">
-                    <form action="/" method="POST">
+                    <!-- {{ user }} -->
+                    <form action="/user_update" method="POST">
                         <lebel>First name</lebel>
                         <br>
-                        <input type="text" name="firstname" required>
+                        <input type="text" name="firstname" value="{{ user.firstname if user else '' }}" required>
                         <br>
                         <lebel>Last name</lebel><br>
-                        <input type="text" name="lastname" required><br>
+                        <input type="text" name="lastname" value="{{ user.lastname if user else '' }}" required><br>
 
                         <lebel>Registration No</lebel><br>
-                        <input type="number" name="regno" required><br>
+                        <input type="number" name="regno" value="{{ user.regno if user else '' }}" required><br>
 
                         <lebel>Domain</lebel><br>
                         <select name="domain" required>
+
+                            {% if user %}
+                            <option value="">Select...</option>
+
+                            {% if user.domain == 'cse' %}
                             <option value="cse" selected>CSE</option>
+                            {% else %}
+                            <option value="cse">CSE</option>
+                            {% endif %}
+
+                            {% if user.domain == 'eee' %}
+                            <option value="eee" selected>EEE</option>
+                            {% else %}
+                            <option value="cse">CSE</option>
+                            {% endif %}
+
+                            {% if user.domain == 'civil' %}
+                            <option value="civil" selected>CIVIL</option>
+                            {% else %}
+                            <option value="cse">CSE</option>
+                            {% endif %}
+
+                            {% else %}
+
+                            <option value="" selected>Select...</option>
+                            <option value="cse">CSE</option>
                             <option value="eee">EEE</option>
                             <option value="civil">CIVIL</option>
+                            {% endif %}
                         </select><br>
 
                         <lebel>Select year</lebel><br>
                         <select name="year" required>
+                            {% if user %}
+                            <option value="">Select...</option>
+
+                            {% if user.year == '1st' %}
                             <option value="1st" selected>First</option>
-                            <option value="1st" selected>Second</option>
-                            <option value="1st" selected>Third</option>
-                            <option value="1st" selected>Fourth</option>
+                            {% else %}
+                            <option value="1st">First</option>
+                            {% endif %}
+
+                            {% if user.year == '2nd' %}
+                            <option value="2nd" selected>Second</option>
+                            {% else %}
+                            <option value="cse">Second</option>
+                            {% endif %}
+
+                            {% if user.year == '3rd' %}
+                            <option value="3rd" selected>Third</option>
+                            {% else %}
+                            <option value="cse">Third</option>
+                            {% endif %}
+
+                            {% if user.year == '4th' %}
+                            <option value="4th" selected>Fourth</option>
+                            {% else %}
+                            <option value="cse">Fourth</option>
+                            {% endif %}
+
+                            {% else %}
+                            <option value="" selected>Select...</option>
+                            <option value="1st">First</option>
+                            <option value="2nd">Second</option>
+                            <option value="3rd">Third</option>
+                            <option value="4th">Fourth</option>
+                            {% endif %}
+
                         </select><br>
 
                         <lebel>Date Of Birth:</lebel><br>
                         <input type="date" name="date" required><br>
                         <lebel>Address</lebel><br>
-                        <input type="text" name="address" required><br>
+
+                        <input type="text" name="address" value="{{ user.address if user else '' }}" required><br>
+
+                        <input type="text" value="update" name="request_type" style="visibility: hidden;display: none;">
                         <input type="submit" value="Save And Update">
 
                     </form>

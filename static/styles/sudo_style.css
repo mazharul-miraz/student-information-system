@@ -269,3 +269,7 @@ input[type=password] {
   border: 1px solid #444;
   box-sizing: border-box;
 }
+
+.search_bar {
+  float: left;
+}
