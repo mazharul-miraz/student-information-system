@@ -83,10 +83,31 @@ def logout():
     return redirect(url_for('login'))
 
 
+# *******CRUD Delete User***********
 # USER DELETE
-@app.route('/user_del')
+@app.route('/user_del', methods=['POST', 'GET'])
 def user_del():
-    return render_template('user_del.html')
+    if request.method == 'POST':
+        return uderDel(request)
+        # return render_template('user_del.html')
+    else:
+        return render_template('user_del.html')
+
+
+def uderDel(request):
+    delRegno = request.form['rmvrgno']
+
+    delUser = db.user.find_one({
+        'regno': delRegno,
+    })
+
+    if delRegno != None:
+        db.user.delete_one({
+            'regno': delRegno
+        })
+        return redirect('/user_del')
+    else:
+        return 'No user Found'
 
 
 # USER SEARCH

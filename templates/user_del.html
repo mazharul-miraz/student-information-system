@@ -25,6 +25,7 @@
 	<div class="app-sidebar">
 		<h4>Sidebar</h4>
 		<ul>
+			<li><a href="user">Add Record</a></li>
 			<li><a href="all_record">All Record</a></li>
 			<li><a href="user_update">Update</a></li>
 			<li><a href="user_del">Delete</a></li>
@@ -36,10 +37,10 @@
 		<div class="app-data">
 			<div class="card-block">
 				<div class="user-form">
-					<form action="/" method="POST">
+					<form action="/user_del" method="POST">
 						<lebel>Insert REG NO</lebel><br>
-						<input type="number" name="address" required><br>
-						<input type="submit" value="Remove">
+						<input type="number" name="rmvrgno" required><br>
+						<input type="submit" value="Remove Record">
 					</form>
 				</div>
 			</div>
