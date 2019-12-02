@@ -37,14 +37,15 @@
         <div class="app-data">
             <div class="card-block">
                 <div class="user-form">
-                    <form action="/" method="POST">
+                    <form action="/user_src" method="POST">
                         <lebel>Insert REG NO</lebel><br>
-                        <input type="number" name="address" required><br>
+                        <input type="number" name="search_key" required><br>
                         <input type="submit" value="Search">
                     </form>
                 </div>
             </div>
         </div>
+        {% if search_regno %}
         <div class="src_result">
             <table>
                 <tr>
@@ -57,16 +58,17 @@
                     <th>Address</th>
                 </tr>
                 <tr>
-                    <td>11810468</td>
-                    <td>Maria </td>
-                    <td>Anders</td>
-                    <td>CSE</td>
-                    <td>Fourth</td>
-                    <td>16875</td>
-                    <td>Russia</td>
+                    <td>{{search_regno.regno}}</td>
+                    <td>{{search_regno.firstname}} </td>
+                    <td>{{search_regno.lastname}} </td>
+                    <td>{{search_regno.domain}}</td>
+                    <td>{{search_regno.year}}</td>
+                    <td>{{search_regno.bdate}}</td>
+                    <td>{{search_regno.address}}</td>
                 </tr>
             </table>
         </div>
+        {% endif %}
     </div>
 
 </body>

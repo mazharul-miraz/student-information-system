@@ -130,7 +130,7 @@
                         </select><br>
 
                         <lebel>Date Of Birth:</lebel><br>
-                        <input type="date" name="date" required><br>
+                        <input type="date" name="date" value="{{ user.bdate if user else '' }}" required><br>
                         <lebel>Address</lebel><br>
 
                         <input type="text" name="address" value="{{ user.address if user else '' }}" required><br>

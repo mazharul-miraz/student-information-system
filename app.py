@@ -70,7 +70,6 @@ def newRecord(request):
             "domain": user_domain,
             "year": user_year,
             "bdate": user_bdate,
-            "bdate": user_bdate,
             "address": user_address,
         })
         return render_template('user.html', user_email=session['user'], notification_text='User Added')
@@ -110,10 +109,25 @@ def uderDel(request):
         return 'No user Found'
 
 
-# USER SEARCH
-@app.route('/user_src')
+# *********Search User Record************
+@app.route('/user_src', methods=['POST', 'GET'])
 def user_src():
-    return render_template('user_src.html')
+    if request.method == 'POST':
+        return search_user(request)
+    else:
+        return render_template('user_src.html')
+
+
+def search_user(request):
+    search_id = request.form['search_key']
+    search_regno = db.user.find_one({
+        'regno': search_id,
+    })
+    if search_regno == None:
+        return 'No Reoard Found'
+    else:
+        return render_template('user_src.html', search_regno=search_regno)
+
 
 # *********Update User Record************
 # USER UPDATE
@@ -136,18 +150,35 @@ def record_search(request):
             return render_template('user_update.html')
     else:
         return updateUser(request)
-        render_template('user_update.html')
 
 
-def updateUser():
+def updateUser(request):
     update_firstname = request.form["firstname"]
     update_lastname = request.form["lastname"]
     update_regno = request.form["regno"]
     update_domain = request.form["domain"]
     update_year = request.form["year"]
     update_date = request.form["date"]
+    update_address = request.form["address"]
+
+    saved = db.user.update_one({
+        "regno": update_regno
+    }, {
+        '$set': {
+            "firstname": update_firstname,
+            "lastname": update_lastname,
+            "domain": update_domain,
+            "year": update_year,
+            "bdate": update_date,
+            "address": update_address
+        }
+    })
+    print(saved)  # for debugging
+    return render_template('user_update.html')
+
 
 # *********SHOW ALL Record************
+
 @app.route('/all_record', methods=['POST', 'GET'])
 def showAllRecord():
     if request.method == 'GET':
