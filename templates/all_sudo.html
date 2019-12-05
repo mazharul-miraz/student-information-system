@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>All SuperUser </title>
+    <!-- <link rel="stylesheet" type="text/css" href="sudo_style.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/sudo_style.css') }}">
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav-left">
+            <ul>
+                <li style="background-color: #A30000"><a href="#">Super Admin</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li style="background-color: #B71C1C;"><a href="#">User Name</a></li>
+                <li style="background-color: #B71C1C;"><a href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="app-sidebar">
+        <h4>Sidebar</h4>
+        <ul>
+            <li><a href="sudo">Dashboard</a></li>
+            <li><a href="add_user">Add New User</a></li>
+            <li><a href="all_user">All Users</a></li>
+            <li><a href="crt_sudo">Create super user</a></li>
+            <li><a href="all_sudo">All super user</a></li>
+        </ul>
+    </div>
+    <div class="app-content">
+        <h2>All super user</h2>
+        <div class="app-data">
+            <div class="card-block">
+                <div class="card">
+                    <span class="card-heading">Total User</span>
+                    <span class="card-num">45</span>
+                </div>
+                <div class="card">
+                    <span class="card-heading">Total User</span>
+                    <span class="card-num">45</span>
+                </div>
+            </div>
+            <div class="user_list">
+                <h4 style="margin-bottom: 15px;">All super user list</h4>
+
+                <table>
+                    <tr>
+                        <th>Email Id</th>
+                        <th>Action</th>
+                    </tr>
+
+                    {% for user in sudouserList %}
+                    <tr>
+                        <td>{{ user.email }}</td>
+                        <td>Remove</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

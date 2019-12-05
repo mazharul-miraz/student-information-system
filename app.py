@@ -32,14 +32,17 @@ def userLogin(request):
         return 'Wrong password'
     else:
         session['user'] = loginEmail
-        # return 'volla!'
-        return redirect(url_for('user'))
+        session['user_type'] = newUser['user_type']
+
+        if newUser['user_type'] == 'sudo':
+            return redirect(url_for('sudo'))
+        else:
+            return redirect(url_for('user'))
 
 
 # *******CRUD Add User***********
 @app.route('/user', methods=['POST', 'GET'])
 def user():
-
     if request.method == 'POST':
         return newRecord(request)
     else:
@@ -58,12 +61,12 @@ def newRecord(request):
     user_bdate = request.form['bdate']
     user_address = request.form['address']
 
-    existingRecord = db.user.find_one({"regno": user_regno})
+    existingRecord = db.user_records.find_one({"regno": user_regno})
 
     if existingRecord != None:
         return ' This Registration Number Already Exist'
     else:
-        db.user.insert_one({
+        db.user_records.insert_one({
             "firstname": user_firstname,
             "lastname": user_lastname,
             "regno": user_regno,
@@ -96,12 +99,12 @@ def user_del():
 def uderDel(request):
     delRegno = request.form['rmvrgno']
 
-    delUser = db.user.find_one({
+    delUser = db.user_records.find_one({
         'regno': delRegno,
     })
 
     if delRegno != None:
-        db.user.delete_one({
+        db.user_records.delete_one({
             'regno': delRegno
         })
         return redirect('/user_del')
@@ -120,7 +123,7 @@ def user_src():
 
 def search_user(request):
     search_id = request.form['search_key']
-    search_regno = db.user.find_one({
+    search_regno = db.user_records.find_one({
         'regno': search_id,
     })
     if search_regno == None:
@@ -143,7 +146,7 @@ def record_search(request):
     search_key = request.form["request_type"]
     if search_key == 'search':
         search_id = request.form["updateregno"]
-        UserExist = db.user.find_one({"regno": search_id})
+        UserExist = db.user_records.find_one({"regno": search_id})
         if UserExist != None:
             return render_template('user_update.html', user=UserExist)
         else:
@@ -200,9 +203,26 @@ def allrecord():
 # *********SUPER ADMIN************
 
 # SUPER USER
-@app.route('/sudo')
+@app.route('/sudo', methods=['GET', 'POST'])
 def sudo():
-    return render_template('sudo.html')
+    if request.method == ['POST']:
+        return checkSudo()
+    else:
+        return render_template('sudo.html')
+
+
+def checkSudo():
+    sudo_useremail = request.form["userLoginEmail"]
+    sudo_password = request.form["userLoginPsd"]
+
+    NotExist = db.user.find({
+        ""
+    })
+
+    #    if 'user' in session:
+    #         return render_template('user.html', user_email=session['user'])
+    #     else:
+    #         return redirect(url_for('login'))
 
 
 # VIEW ALL USER
@@ -213,7 +233,7 @@ def view_all():
 
 def ShowallUser():
     userList = []
-    allUser = db.user.find()
+    allUser = db.user.find({"user_type": "user"})
     for user in allUser:
         userList.append(user)
     return render_template('all_user.html', userList=userList)
@@ -253,12 +273,49 @@ def CreateUser(request):
         print('UserExist')
         return " this user already exist"
     else:
-        print('NOT UserExist')
-        db.user.insert_one({"email": userEmail, "password": userPassword})
+        db.user.insert_one(
+            {"email": userEmail, "password": userPassword, "user_type": "user"})
         return redirect(url_for('sudo'))
 
+
+@app.route('/crt_sudo', methods=['GET', 'POST'])
+def createsuper_user():
+    if request.method == 'POST':
+        return create_sudo(request)
+    else:
+        return render_template('crt_sudo.html')
+
+
+def create_sudo(request):
+    sudo_email = request.form['semail']
+    sudo_password = request.form['spassword']
+
+    old_sudo = db.user.find_one({"email": sudo_email})
+
+    if old_sudo != None:
+        return 'this user already exist'
+    else:
+        db.user.insert_one(
+            {"email": sudo_email, "password": sudo_password, "user_type": "sudo"})
+        return render_template('crt_sudo.html')
+
+
+@app.route('/all_sudo', methods=['GET'])
+def all_sudo():
+    if request.method == 'GET':
+        return viewall_sudo(request)
+    else:
+        return render_template('all_sudo.html')
+
+
+def viewall_sudo(request):
+    superuser_arr = []
+    allSudo = db.user.find({"user_type": "sudo"})
+    for sudo in allSudo:
+        superuser_arr.append(sudo)
+    return render_template('all_sudo.html', sudouserList=superuser_arr)
+
+
 # *********SUPER ADMIN************
-
-
 # DEBUGGER
 app.run(debug=True)
