@@ -27,17 +27,22 @@ def userLogin(request):
     newUser = db.user.find_one({"email": loginEmail})
 
     if newUser == None:  # user doesn't exist
-        return 'Sorry This Not Registered A User'
+        return render_template('login.html', wrong_email='This email is not registered')
+
     elif newUser['password'] != loginPsd:  # user exist
-        return 'Wrong password'
+        return render_template('login.html', wrong_password='Wrong Password')
+
     else:
         session['user'] = loginEmail
         session['user_type'] = newUser['user_type']
 
         if newUser['user_type'] == 'sudo':
             return redirect(url_for('sudo'))
+
         else:
             return redirect(url_for('user'))
+
+# SIGNOUT
 
 
 # *******CRUD Add User***********
@@ -76,12 +81,13 @@ def newRecord(request):
             "address": user_address,
         })
         return render_template('user.html', user_email=session['user'], notification_text='User Added')
+
+
 # *******CRUD Add User***********
-
-
 @app.route('/logout')
 def logout():
     session.pop('user', None)
+    session.pop('user_type', None)
     return redirect(url_for('login'))
 
 
@@ -203,29 +209,22 @@ def allrecord():
 # *********SUPER ADMIN************
 
 # SUPER USER
-@app.route('/sudo', methods=['GET', 'POST'])
+@app.route('/sudo', methods=['GET'])
 def sudo():
-    if request.method == ['POST']:
-        return checkSudo()
-    else:
-        return render_template('sudo.html')
+    if 'user' in session:
+        session_user = session['user']
+        print(session_user)
+
+        user_data = db.user.find_one({
+            "email": session_user
+        })
+
+        if user_data['user_type'] == 'sudo':
+            return render_template('sudo.html')
+        else:
+            return redirect(url_for('user'))
 
 
-def checkSudo():
-    sudo_useremail = request.form["userLoginEmail"]
-    sudo_password = request.form["userLoginPsd"]
-
-    NotExist = db.user.find({
-        ""
-    })
-
-    #    if 'user' in session:
-    #         return render_template('user.html', user_email=session['user'])
-    #     else:
-    #         return redirect(url_for('login'))
-
-
-# VIEW ALL USER
 @app.route('/all_user', methods=['GET'])
 def view_all():
     return ShowallUser()

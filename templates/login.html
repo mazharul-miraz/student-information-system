@@ -5,22 +5,15 @@
 	<title>User logIn</title>
 	<link rel="stylesheet" type="text/css" href="sudo_style.css">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/sudo_style.css') }}">
+	<style>
+		.loginp {
+			font-size: 14px;
+			font-size: 14px;
+		}
+	</style>
 </head>
 
 <body>
-	<div class="header">
-		<div class="nav-left">
-			<ul>
-				<li style="background-color: #A30000"><a href="#">Super Admin</a></li>
-			</ul>
-		</div>
-		<div class="nav-right">
-			<ul>
-				<li style="background-color: #B71C1C;"><a href="#">User Name</a></li>
-				<li style="background-color: #B71C1C;"><a href="#">Sign out</a></li>
-			</ul>
-		</div>
-	</div>
 	<div class="log-mod">
 
 		<form class="form-signin" action="/" method="POST">
@@ -32,13 +25,15 @@
 
 			<input type="password" class="form-control" name="userLoginPsd" placeholder="Password" required="" />
 			</br>
-			<label class="checkbox">
-				<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-			</label>
-			</br>
+			{% if wrong_password %}
+			<p class="loginp">fuck you ! wrong_password</p>
+			{% endif %}
+
+			{% if wrong_email %}
+			<p class="loginp">fuck you ! This email is not registered</p>
+			{% endif %}
 			<button class="btn" type="submit">Login</button>
 		</form>
-
 	</div>
 
 </body>

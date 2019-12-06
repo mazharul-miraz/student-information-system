@@ -273,3 +273,8 @@ input[type=password] {
 .search_bar {
   float: left;
 }
+
+.loginp {
+  font-size: 14px;
+  color: darksalmon;
+}
